@@ -6,21 +6,27 @@ public class WeaponController : MonoBehaviour
 {
     [SerializeField] private GameObject sword; 
     [SerializeField] private float attackCooldown = 1.0f;
-
-    private bool canAttack = true;
+    [SerializeField] private bool canAttack = true;
+    [SerializeField] private AudioClip swordAttackSound;
 
     void Update() {
         if(Input.GetMouseButtonDown(0)) { // left click
             if (canAttack) {
-                SwordAttack()
+                SwordAttack();
             }
         }
     }
 
     public void SwordAttack() {
         canAttack = false;
-        Animator anim = Sword.GetComponent<Animator>(); 
+        Animator anim = sword.GetComponent<Animator>(); 
         anim.SetTrigger("Attack");
+
+        // audio
+        AudioSource ac = GetComponent<AudioSource>();
+        ac.PlayOneShot(swordAttackSound);
+
+        StartCoroutine(ResetAttackCooldown());
     }
 
     IEnumerator ResetAttackCooldown() {
