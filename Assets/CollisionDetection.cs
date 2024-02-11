@@ -8,11 +8,10 @@ public class CollisionDetection : MonoBehaviour
     // [SerializeField] GameObject HitParticle;
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("hello there");
         if (other.tag == "Enemy" && wc.isAttacking) {
             Debug.Log(other.name);
             other.GetComponent<Animator>().SetTrigger("Hit"); 
-            // Instantiate(HitParticle, new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z), other.transform.rotation)
+            // Instantiate(HitParticle, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), other.transform.rotation);
         }
     }
 }
