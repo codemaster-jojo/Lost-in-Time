@@ -9,6 +9,8 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private bool canAttack = true;
     [SerializeField] private AudioClip swordAttackSound;
 
+    public bool isAttacking = false;
+
     void Update() {
         if(Input.GetMouseButtonDown(0)) { // left click
             if (canAttack) {
@@ -19,6 +21,7 @@ public class WeaponController : MonoBehaviour
 
     public void SwordAttack() {
         canAttack = false;
+        isAttacking = true;
         Animator anim = sword.GetComponent<Animator>(); 
         anim.SetTrigger("Attack");
 
@@ -30,7 +33,13 @@ public class WeaponController : MonoBehaviour
     }
 
     IEnumerator ResetAttackCooldown() {
+        StartCoroutine(ResetAttackBool());
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
+    }
+
+    IEnumerator ResetAttackBool() {
+        yield return new WaitForSeconds(1.0f);
+        isAttacking = false;
     }
 }
