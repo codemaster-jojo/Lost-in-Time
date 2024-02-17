@@ -17,6 +17,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private float speed;
 
+    [SerializeField] private float spotDistance;
+    [SerializeField] private float atkRange;
+
     private Vector3 direction;
     private Vector3 roamPosition;
 
@@ -39,9 +42,10 @@ public class EnemyAI : MonoBehaviour
                 direction = (roamPosition - transform.position);
                 transform.position += direction.normalized * speed * Time.deltaTime;
 
-                float reachedPositionDistance = 1f;
+                float reachedPositionDistance = 0.5f;
                     if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance) { // reached roam position
-                        StartCoroutine(ResetRoam()); // !!! WHICH IDLE ROAM BETTER: ALWAYS MOVING IN RANDOM DIRECTION OR MOVE IN ONE DIRECTION + WAIT !!!
+                        StartCoroutine(ResetRoam()); 
+                        // !!! WHICH IDLE ROAM BETTER: ALWAYS MOVING IN RANDOM DIRECTION OR MOVE IN ONE DIRECTION + WAIT !!!
                     }
 
                 // Transition to Chase state based on some condition (e.g., player spotted)
@@ -91,12 +95,12 @@ public class EnemyAI : MonoBehaviour
     private bool PlayerSpotted()
     {
         // Simulated condition: Player is always spotted in this example
-        return Vector3.Distance(transform.position, target.position) <= 50f;
+        return Vector3.Distance(transform.position, target.position) <= spotDistance;
     }
 
     private bool CloseEnoughToAttack()
     {
-        return Vector3.Distance(transform.position, target.position) <= 2f;
+        return Vector3.Distance(transform.position, target.position) <= atkRange;
     }
     /*
     private bool PlayerVisible()
