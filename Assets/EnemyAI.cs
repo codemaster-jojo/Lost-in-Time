@@ -40,9 +40,8 @@ public class EnemyAI : MonoBehaviour
                 transform.position += direction.normalized * speed * Time.deltaTime;
 
                 float reachedPositionDistance = 1f;
-                    if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance) {
-                        // reached roam position
-                        roamPosition = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * Random.Range(5f, 10f); // set new roaming position
+                    if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance) { // reached roam position
+                        StartCoroutine(ResetRoam()); // !!! WHICH IDLE ROAM BETTER: ALWAYS MOVING IN RANDOM DIRECTION OR MOVE IN ONE DIRECTION + WAIT !!!
                     }
 
                 // Transition to Chase state based on some condition (e.g., player spotted)
@@ -81,6 +80,12 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
     }
+
+    IEnumerator ResetRoam() {
+        yield return new WaitForSeconds(1f);
+        roamPosition = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * Random.Range(5f, 10f); // set new roaming position
+    }
+
 
     // Example methods to simulate conditions for state transitions
     private bool PlayerSpotted()
