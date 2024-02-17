@@ -18,11 +18,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float speed;
 
     private Vector3 direction;
+    private Vector3 roamPosition;
 
     void Start()
     {
         // Initialize state to Idle
         currentState = State.Idle;
+        roamPosition = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * Random.Range(5f, 10f); // set roaming position
+
     }
 
     void Update()
@@ -32,7 +35,15 @@ public class EnemyAI : MonoBehaviour
         {
             case State.Idle:
                 // Perform actions for Idle state
-                
+                // !!! HOW TO DO PATHFINDING, EVERYTHING I FOUND ONLINE USES NAVMESH AGENT !!!
+                direction = (roamPosition - transform.position);
+                transform.position += direction.normalized * speed * Time.deltaTime;
+
+                float reachedPositionDistance = 1f;
+                    if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance) {
+                        // reached roam position
+                        roamPosition = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * Random.Range(5f, 10f); // set new roaming position
+                    }
 
                 // Transition to Chase state based on some condition (e.g., player spotted)
                 if (PlayerSpotted())
