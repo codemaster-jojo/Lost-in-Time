@@ -44,7 +44,7 @@ public class EnemyAI : MonoBehaviour
 
                 float reachedPositionDistance = 0.5f;
                     if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance) { // reached roam position
-                        StartCoroutine(ResetRoam()); 
+                        roamPosition = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * Random.Range(5f, 10f); // set new roaming position
                         // !!! WHICH IDLE ROAM BETTER: ALWAYS MOVING IN RANDOM DIRECTION OR MOVE IN ONE DIRECTION + WAIT !!!
                     }
 
