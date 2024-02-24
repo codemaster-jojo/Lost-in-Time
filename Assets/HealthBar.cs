@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// CREDITS TO: https://www.youtube.com/watch?v=BLfNP4Sc_iA
+
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Slider slider;

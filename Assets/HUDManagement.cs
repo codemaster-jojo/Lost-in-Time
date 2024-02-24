@@ -14,7 +14,6 @@ public class HUDManagement : MonoBehaviour
     public HealthBar healthBar;
     public HealthBar hungerBar; // I know its a hunger bar but the name thing is healthbar so...
 
-
     float elapsed = 0f;
 
     // Start is called before the first frame update
