@@ -816,6 +816,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 461564529}
   speed: 5
+  spotDistance: 30
+  atkRange: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
