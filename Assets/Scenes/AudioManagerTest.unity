@@ -517,14 +517,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Collect Point
-    clip: {fileID: 8300000, guid: 29e04abaccf03044795fa6de944e60d5, type: 3}
+  - name: Win Jingle
+    clip: {fileID: 8300000, guid: 56f849c669668894dbf56bb4c8dfaea2, type: 3}
     volume: 1
-    pitch: 0.9
+    pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Win Jingle
-    clip: {fileID: 8300000, guid: 1b1b32dc4fc78cc41b3dcb5b03dcd65d, type: 3}
+  - name: Collect Point
+    clip: {fileID: 8300000, guid: 29e04abaccf03044795fa6de944e60d5, type: 3}
     volume: 1
     pitch: 1
     loop: 0
