@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class EggEnemySpawner : MonoBehaviour
 {
-    [SerializeField] Transform eggTransform;
+    //[SerializeField] Transform eggCenterPos;
     [SerializeField] GameObject eggEnemyPrefab;
     [SerializeField] float spawnRadius = 5f;
+    [SerializeField] float spawnInterval = 3f;
+    float spawnTimer = 0f;
+    bool onCooldown = false;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (onCooldown == false)
         {
             SpawnEnemy();
+            spawnTimer = spawnInterval;
+            onCooldown = true;
+        }
+        else if(onCooldown)
+        {
+            spawnTimer -= Time.deltaTime;
+        }
+        if (spawnTimer <= 0f)
+        {
+            onCooldown = false;
         }
     }
     void SpawnEnemy()

@@ -210,7 +210,7 @@ Transform:
   m_GameObject: {fileID: 612048597}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -517,9 +517,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cd90c9be974a742a994d72c148c4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eggTransform: {fileID: 1004532867}
-  eggEnemyPrefab: {fileID: 0}
+  eggCenterPos: {fileID: 1004532867}
+  eggEnemyPrefab: {fileID: 5108876030769516223, guid: 465b28c63220e194fa7ca4878e7a6317,
+    type: 3}
   spawnRadius: 5
+  spawnInterval: 3
 --- !u!1 &1514545278
 GameObject:
   m_ObjectHideFlags: 0
