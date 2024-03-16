@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Scenes/EnemyAITest.meta
 guid: 9ee48c02228b34c2cbb9dd8d98b7884d
 folderAsset: yes
+=======
+guid: 079b63341c5fd41aab9210ebb465529e
+>>>>>>> Stashed changes:Assets/Scenes/HUDTestScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
