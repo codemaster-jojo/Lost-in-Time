@@ -10,6 +10,8 @@ public class HUDManagement : MonoBehaviour
     [SerializeField] private int maxHunger = 100;
     [SerializeField] private int currentHunger;
 
+    public static HUDManagement instance;
+
 
     public HealthBar healthBar;
     public HealthBar hungerBar; // I know its a hunger bar but the name thing is healthbar so...
@@ -22,6 +24,16 @@ public class HUDManagement : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         hungerBar.SetMaxHealth(maxHunger);
+
+        // singleton stuff
+        if (instance != null && instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            instance = this; 
+        } 
     }
 
     // Update is called once per frame
@@ -39,6 +51,12 @@ public class HUDManagement : MonoBehaviour
     }
     private void GetHungry() {
         currentHunger -= 1;
+        hungerBar.SetHealth(currentHunger);
+    }
+
+    public void Eat(int amount) {
+        currentHunger += amount;
+        if (currentHunger > maxHunger) currentHunger = maxHunger;
         hungerBar.SetHealth(currentHunger);
     }
 
