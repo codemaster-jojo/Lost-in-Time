@@ -130,15 +130,16 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private NavMeshAgent navMeshAgent;
 
     private Vector3 direction;
-    private Vector3 roamPosition;
+    [SerializeField] private Transform[] waypoints;
+    private int waypointIndex;
 
     void Start()
     {
         // Initialize state to Idle
         currentState = State.Idle;
-        roamPosition = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * Random.Range(5f, 10f); // set roaming position
-
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        waypointIndex = 0;
 
     }
 
@@ -148,17 +149,16 @@ public class EnemyAI : MonoBehaviour
         switch (currentState)
         {
             case State.Idle:
-                // Perform actions for Idle state
-                // direction = (roamPosition - transform.position);
-                // transform.position += direction.normalized * speed * Time.deltaTime;
+                Debug.Log(waypointIndex);
+                Debug.Log(Vector3.Distance(transform.position, waypoints[waypointIndex].position));
+                navMeshAgent.destination = waypoints[waypointIndex].position;                
 
-                navMeshAgent.destination = roamPosition;
-
-                float reachedPositionDistance = 0.5f;
-                    if (Vector3.Distance(transform.position, roamPosition) < reachedPositionDistance) { // reached roam position
-                        roamPosition = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized * Random.Range(5f, 10f); // set new roaming position
-                        // !!! WHICH IDLE ROAM BETTER: ALWAYS MOVING IN RANDOM DIRECTION OR MOVE IN ONE DIRECTION + WAIT !!!
-                    }
+                float reachedPositionDistance = 1f;
+                if (Vector3.Distance(transform.position, waypoints[waypointIndex].position) < reachedPositionDistance) { // reached roam position
+                    Debug.Log("hi");
+                    waypointIndex++;
+                    waypointIndex %= waypoints.Length;
+                }
 
                 // Transition to Chase state based on some condition (e.g., player spotted)
                 if (PlayerSpotted())
