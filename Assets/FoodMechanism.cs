@@ -10,5 +10,9 @@ public class FoodMechanism : MonoBehaviour
             HUDManagement.instance.Eat(10);
             Destroy(coll.gameObject);
         }
+        if (coll.gameObject.tag == "PoisonFood") {
+            HUDManagement.instance.Eat(-10);
+            Destroy(coll.gameObject);
+        }
     }
 }
