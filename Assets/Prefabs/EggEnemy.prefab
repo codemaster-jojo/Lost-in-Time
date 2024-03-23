@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  eggTransform: {fileID: 0}
+  damage: 2.5
 --- !u!54 &4883907994389937132
 Rigidbody:
   m_ObjectHideFlags: 0

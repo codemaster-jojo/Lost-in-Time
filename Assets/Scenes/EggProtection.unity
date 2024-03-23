@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 1004532866}
   - component: {fileID: 1004532865}
   - component: {fileID: 1004532864}
+  - component: {fileID: 1004532868}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Untagged
@@ -473,6 +474,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1004532868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004532863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3860526eac5cf74b9b2708d462ff50f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1228195717
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cd90c9be974a742a994d72c148c4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eggCenterPos: {fileID: 1004532867}
   eggEnemyPrefab: {fileID: 5108876030769516223, guid: 465b28c63220e194fa7ca4878e7a6317,
     type: 3}
   spawnRadius: 5

@@ -8,24 +8,33 @@ public class EggEnemySpawner : MonoBehaviour
     [SerializeField] GameObject eggEnemyPrefab;
     [SerializeField] float spawnRadius = 5f;
     [SerializeField] float spawnInterval = 3f;
+    Egg egg;
     float spawnTimer = 0f;
     bool onCooldown = false;
 
+    private void Start()
+    {
+        egg = FindObjectOfType<Egg>();
+    }
     private void Update()
     {
-        if (onCooldown == false)
+        if (egg.destroyed == false)
         {
-            SpawnEnemy();
-            spawnTimer = spawnInterval;
-            onCooldown = true;
-        }
-        else if(onCooldown)
-        {
-            spawnTimer -= Time.deltaTime;
-        }
-        if (spawnTimer <= 0f)
-        {
-            onCooldown = false;
+            transform.position = egg.transform.position;
+            if (onCooldown == false)
+            {
+                SpawnEnemy();
+                spawnTimer = spawnInterval;
+                onCooldown = true;
+            }
+            else if (onCooldown)
+            {
+                spawnTimer -= Time.deltaTime;
+            }
+            if (spawnTimer <= 0f)
+            {
+                onCooldown = false;
+            }
         }
     }
     void SpawnEnemy()
